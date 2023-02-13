@@ -14,6 +14,9 @@ begin
     f_orig_o <= (not(b_i) and a_i) or (c_i and not(b_i or not(a_i)));
     f_nand_o <= not(b_a or not(a_i)) or not(not(c_i) or (b_i or not(a_i)));
     f_nor_o  <= not(not(not(b_i) and a_i) and not(c_i and (not(b_i) and a_i)));
+
+    f_line_l_o <= (a_i and b_i) or (a_i and c_i);
+    f_line_r_o <= (a_i) and (b_i or c_i);
 end architecture dataflow;
 ```
 
@@ -38,4 +41,4 @@ end architecture dataflow;
 
 2. Link to your public EDA Playground example:
 
-   [https://www.edaplayground.com/...](https://www.edaplayground.com/...)
+   [https://www.edaplayground.com/x/tz8X](https://www.edaplayground.com/x/tz8X)
