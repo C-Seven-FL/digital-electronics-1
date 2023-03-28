@@ -1,6 +1,6 @@
 ----------------------------------------------------------
 --
--- Template for 4-digit 7-segment display driver testbench.
+-- Template for traffic lights controller testbench.
 -- Nexys A7-50T, xc7a50ticsg324-1L
 -- TerosHDL, Vivado v2020.2, EDA Playground
 --
@@ -17,55 +17,35 @@ library ieee;
 -- Entity declaration for testbench
 ----------------------------------------------------------
 
-entity tb_driver_7seg_4digits is
+entity tb_tlc is
   -- Entity of testbench is always empty
-end entity tb_driver_7seg_4digits;
+end entity tb_tlc;
 
 ----------------------------------------------------------
 -- Architecture body for testbench
 ----------------------------------------------------------
 
-architecture testbench of tb_driver_7seg_4digits is
+architecture testbench of tb_tlc is
 
-  -- Testbench local constants
+  -- Local constants
   constant c_CLK_100MHZ_PERIOD : time := 10 ns;
 
-  -- Testench local signals
+  -- Local signals
   signal sig_clk_100mhz : std_logic;
   signal sig_rst        : std_logic;
-  signal sig_data0      : std_logic_vector(7 downto 0);
-  signal sig_data1      : std_logic_vector(7 downto 0);
-  signal sig_data2      : std_logic_vector(7 downto 0);
-  signal sig_data3      : std_logic_vector(7 downto 0);
-  signal sig_data4      : std_logic_vector(7 downto 0);
-  signal sig_data5      : std_logic_vector(7 downto 0);
-  signal sig_data6      : std_logic_vector(7 downto 0);
-  signal sig_data7      : std_logic_vector(7 downto 0);
-  signal sig_dp_vect    : std_logic_vector(7 downto 0);
-  signal sig_dp         : std_logic;
-  signal sig_seg        : std_logic_vector(6 downto 0);
-  signal sig_dig        : std_logic_vector(3 downto 0);
+  signal sig_south      : std_logic_vector(2 downto 0);
+  signal sig_west       : std_logic_vector(2 downto 0);
 
 begin
 
-  -- Connecting testbench signals with driver_7seg_4digits
-  -- entity (Unit Under Test)
-  uut_driver_7seg_4digits : entity work.driver_7seg_4digits
+  -- Connecting testbench signals with tlc entity
+  -- (Unit Under Test)
+  uut_tlc : entity work.tlc
     port map (
-      clk     => sig_clk_100mhz,
-      rst     => sig_rst,
-      data0   => sig_data0,
-      data1   => sig_data1,
-      data2   => sig_data2,
-      data3   => sig_data3,
-      data4 => sig_data4,
-      data5 => sig_data5,
-      data6 => sig_data6,
-      data7 => sig_data7,
-      dp_vect => sig_dp_vect,
-      dp      => sig_dp,
-      seg     => sig_seg,
-      dig     => sig_dig
+      clk   => sig_clk_100mhz,
+      rst   => sig_rst,
+      south => sig_south,
+      west  => sig_west
     );
 
   --------------------------------------------------------
@@ -74,7 +54,7 @@ begin
   p_clk_gen : process is
   begin
 
-    while now < 400 ns loop -- 40 periods of 100MHz clock
+    while now < 10000 ns loop -- 10 usec of simulation
 
       sig_clk_100mhz <= '0';
       wait for c_CLK_100MHZ_PERIOD / 2;
@@ -82,6 +62,7 @@ begin
       wait for c_CLK_100MHZ_PERIOD / 2;
 
     end loop;
+
     wait;
 
   end process p_clk_gen;
@@ -93,13 +74,14 @@ begin
   begin
 
     sig_rst <= '0';
-    wait for 12 ns;
-    
-    sig_rst <= '1';
-    wait for 60 ns;
-    
-    sig_rst <= '0';
+    wait for 200 ns;
 
+    -- Reset activated
+    sig_rst <= '1';
+    wait for 500 ns;
+
+    -- Reset deactivated
+    sig_rst <= '0';
     wait;
 
   end process p_reset_gen;
@@ -111,17 +93,7 @@ begin
   begin
 
     report "Stimulus process started";
-
-    sig_dp_vect <= "11110111";
-    sig_data7 <= x"3";
-    sig_data6 <= x"1";
-    sig_data5 <= x"4";
-    sig_data4 <= x"2";
-    sig_data3 <= x"7";
-    sig_data2 <= x"5";
-    sig_data1 <= x"8";
-    sig_data0 <= x"6";
-
+    -- No other input data is needed.
     report "Stimulus process finished";
     wait;
 

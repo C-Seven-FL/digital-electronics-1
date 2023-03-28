@@ -48,11 +48,15 @@ entity driver_7seg_4digits is
   port (
     clk     : in    std_logic;
     rst     : in    std_logic;
-    data0   : in    std_logic_vector(3 downto 0);
-    data1   : in    std_logic_vector(3 downto 0);
-    data2   : in    std_logic_vector(3 downto 0);
-    data3   : in    std_logic_vector(3 downto 0);
-    dp_vect : in    std_logic_vector(3 downto 0);
+    data0   : in    std_logic_vector(7 downto 0);
+    data1   : in    std_logic_vector(7 downto 0);
+    data2   : in    std_logic_vector(7 downto 0);
+    data3   : in    std_logic_vector(7 downto 0);
+    data4   : in    std_logic_vector(7 downto 0);
+    data5   : in    std_logic_vector(7 downto 0);
+    data6   : in    std_logic_vector(7 downto 0);
+    data7   : in    std_logic_vector(7 downto 0);
+    dp_vect : in    std_logic_vector(7 downto 0);
     dp      : out   std_logic;
     seg     : out   std_logic_vector(6 downto 0);
     dig     : out   std_logic_vector(3 downto 0)
@@ -134,30 +138,47 @@ begin
       if (rst = '1') then
         sig_hex <= data0;
         dp      <= dp_vect(0);
-        dig     <= "1110";
+        dig     <= "11111110";
       else
 
         case sig_cnt_2bit is
+          when "111" =>
+            sig_hex <= data7;
+            dp      <= dp_vect(7);
+            dig     <= "01111111";
+          when "110" =>
+            sig_hex <= data6;
+            dp      <= dp_vect(6);
+            dig     <= "10111111";
+          when "101" =>
+            sig_hex <= data5;
+            dp      <= dp_vect(5);
+            dig     <= "11011111";
+          when "100" =>
+            sig_hex <= data4;
+            dp      <= dp_vect(4);
+            dig     <= "11101111";
 
-          when "11" =>
+
+          when "011" =>
             sig_hex <= data3;
             dp      <= dp_vect(3);
-            dig     <= "0111";
+            dig     <= "11110111";
 
-          when "10" =>
+          when "010" =>
           sig_hex <= data2;
           dp <= dp_vect(2);
-          dig <= "1011";
+          dig <= "11111011";
 
-          when "01" =>
+          when "001" =>
           sig_hex <= data1;
           dp <= dp_vect(1);
-          dig <= "1101";
+          dig <= "11111101";
 
           when others =>
           sig_hex <= data0;
           dp <= dp_vect(0);
-          dig <= "1110";
+          dig <= "11111110";
 
         end case;
 
