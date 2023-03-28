@@ -70,7 +70,7 @@ architecture behavioral of tlc is
 
   -- Output traffic lights' values
   constant c_RED    : std_logic_vector(2 downto 0) := b"100"; --! RGB settings for red color
-  constant c_YELLOW : std_logic_vector(2 downto 0) := b"001"; --! RGB settings for yellow color
+  constant c_YELLOW : std_logic_vector(2 downto 0) := b"110"; --! RGB settings for yellow color
   constant c_GREEN  : std_logic_vector(2 downto 0) := b"010"; --! RGB settings for green color
 
 begin
