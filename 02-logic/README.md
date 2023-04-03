@@ -4,13 +4,13 @@
 
 1. Karnaugh maps for other two functions of 2-bit comparator:
 
-   Greater than:
+   B Greater than A:
 
-   ![K-maps](images/kmap_empty.png)
+   ![K-maps](images/B_gr_A.jpg)
 
-   Less than:
+   A Greater than B:
 
-   ![K-maps](images/kmap_empty.png)
+   ![K-maps](images/A_gr_B.jpg)
 
 2. Mark the largest possible implicants in the K-map and according to them, write the equations of simplified SoP (Sum of the Products) forms of both "greater than" functions and also both simplified PoS (Product of the Sums) forms.
 
