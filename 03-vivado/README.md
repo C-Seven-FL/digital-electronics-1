@@ -8,7 +8,7 @@
 architecture Behavioral of mux_3bit_4to1 is
 begin
 
-    architecture behavioral of mux_3bit_4to1 is
+architecture behavioral of mux_3bit_4to1 is
 
 begin
 
