@@ -1,6 +1,6 @@
-#Yaroslav Shapoval
+# Yaroslav Shapoval
 
-##1.
+## 1.
 ```vhdl
 p_traffic_fsm : process (clk) is
   begin
