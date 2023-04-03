@@ -31,8 +31,10 @@
         report "Stimulus process started";
 
         -- First test case
-        sig_b <= "BCD_OF_YOUR_SECOND_LAST_ID_DIGIT"; -- Such as "0101" if ID = xxxx56
-        sig_a <= "BCD_OF_YOUR_LAST_ID_DIGIT";        -- Such as "0110" if ID = xxxx56
+        sig_b <= "0011";
+        sig_b <= "0010";
+        sig_b <= "0101";
+        sig_a <= "1000";
         wait for 100 ns;
         -- Expected output
         assert (
