@@ -8,10 +8,6 @@
 architecture Behavioral of mux_3bit_4to1 is
 begin
 
-architecture behavioral of mux_3bit_4to1 is
-
-begin
-
   f_o <= a_i when (addr_i = "000" and en_i = '1') else
        b_i when (addr_i = "001" and en_i = '1') else
        c_i when (addr_i = "010" and en_i = '1') else
