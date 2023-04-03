@@ -31,16 +31,16 @@
         report "Stimulus process started";
 
         -- First test case
-        sig_b <= "0011";
-        sig_b <= "0010";
+        sig_d <= "0011";
+        sig_c <= "0010";
         sig_b <= "0101";
         sig_a <= "1000";
         wait for 100 ns;
         -- Expected output
         assert (
-            (sig_b_greater = 'WRITE_CORRECT_VALUE_HERE') and
-            (sig_b_a_equal = 'WRITE_CORRECT_VALUE_HERE') and
-            (sig_a_greater = 'WRITE_CORRECT_VALUE_HERE')
+            (sig_b_greater = '0') and
+            (sig_b_a_equal = '1') and
+            (sig_a_greater = '0')
           )
           -- If false, then report an error
           report "Input combination COMPLETE_THIS_TEXT FAILED"
