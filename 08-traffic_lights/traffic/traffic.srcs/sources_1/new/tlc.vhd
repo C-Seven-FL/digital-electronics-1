@@ -31,7 +31,7 @@ library ieee;
 entity tlc is
   port (
     clk   : in    std_logic;                    --! Main clock
-    rst   : in    std_logic;                    --! High-active synchronous reset
+    rst   : in    std_logic;                    --! High-active synchronous reset 
     south : out   std_logic_vector(2 downto 0); --! Traffic light for "south" direction
     west  : out   std_logic_vector(2 downto 0)  --! Traffic light for "west" direction
   );
@@ -196,18 +196,23 @@ begin
       when WEST_GO =>
         south <= c_RED;
         west <= c_GREEN;
+        
       when WEST_WAIT =>
         south <= c_RED;
         west <= c_YELLOW;
+        
       when SOUTH_STOP =>
         south <= c_RED;
         west <= c_RED;
+        
       when SOUTH_GO =>
         south <= c_GREEN;
         west <= c_RED;
+        
       when SOUTH_WAIT =>
         south <= c_YELLOW;
         west <= c_RED;
+        
       when others =>
         south <= c_RED;
         west  <= c_RED;

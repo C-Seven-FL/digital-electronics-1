@@ -33,6 +33,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity top is
     Port ( CLK100MHZ : in STD_LOGIC;
+           SW : in STD_LOGIC;
            LED16_R : out STD_LOGIC;
            LED16_G : out STD_LOGIC;
            LED16_B : out STD_LOGIC;
